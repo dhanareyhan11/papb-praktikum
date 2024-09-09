@@ -64,7 +64,7 @@ fun MyScreen() {
         TextField(
             value = inputText,
             onValueChange = { inputText = it },
-            label = { Text("Dhana Reyhan kece ni") },
+            label = { Text("Nama dan NIM") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
