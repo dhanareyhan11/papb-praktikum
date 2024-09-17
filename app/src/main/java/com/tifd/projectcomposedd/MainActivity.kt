@@ -3,21 +3,25 @@ package com.tifd.projectcomposedd
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ElevatedButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,6 +54,7 @@ class MainActivity : ComponentActivity() {
 fun MyScreen() {
     var text by remember { mutableStateOf("") }
     var inputText by remember { mutableStateOf("") }
+    var nimText by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -60,22 +65,40 @@ fun MyScreen() {
     ) {
         Text(text = text)
         Spacer(modifier = Modifier.height(16.dp))
-
-        TextField(
-            value = inputText,
-            onValueChange = { inputText = it },
-            label = { Text("Dhana Reyhan kece ni") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-                .background(Color.Black, shape = RoundedCornerShape(8.dp))
-                .padding(16.dp),
-
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = Icons.Filled.AccountBox,
+                contentDescription = "Icon Profile",
+                tint = Color.Blue,
+                modifier = Modifier.size(25.dp)
             )
-
+            Spacer(modifier = Modifier.width(8.dp))
+            OutlinedTextField(
+                value = inputText,
+                onValueChange = { inputText = it},
+                label = { Text("Masukkan nama")},
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp)
+            )
+        }
         Spacer(modifier = Modifier.height(16.dp))
-        ElevatedButton(onClick = {
-            text = inputText
+        OutlinedTextField(
+            value = nimText,
+            onValueChange = {
+                if (it.all { char -> char.isDigit() }) {
+                    nimText = it
+                }
+            },
+            label = { Text("Masukkan NIM") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(onClick = {
+            text = "Nama: $inputText, NIM: $nimText"
         }) {
             Text("Submit")
         }
