@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "263449757989",
+    "project_id": "papb-8506d",
+    "storage_bucket": "papb-8506d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263449757989:android:78ffeca4a4021c2f8a32cc",
+        "android_client_info": {
+          "package_name": "com.tifd.projectcomposedd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHpZPv4P0tUTaDH5mwUBoz-MMhlR9FuCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
