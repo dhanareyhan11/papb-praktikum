@@ -1,6 +1,7 @@
 package com.tifd.projectcomposedd
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +20,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tifd.projectcomposedd.ui.theme.ProjectComposeDDTheme
 import kotlinx.coroutines.launch
@@ -37,6 +41,7 @@ class ListActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun DataListScreen() {
@@ -46,6 +51,8 @@ fun DataListScreen() {
     var isError by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+
 
     // Fetch data from Firestore
     LaunchedEffect(Unit) {
@@ -64,6 +71,19 @@ fun DataListScreen() {
     Scaffold(
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
+        },
+        topBar = {
+            TopAppBar(
+                title = { Text("Data Jadwal Kuliah") },
+                actions = {
+                    IconButton(onClick = {
+                        // Navigasi ke GithubProfileActivity
+                        context.startActivity(Intent(context, GithubProfileActivity::class.java))
+                    }) {
+                        Icon(imageVector = Icons.Default.Person, contentDescription = "Go to GitHub Profile")
+                    }
+                }
+            )
         }
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
