@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        val intent = Intent(this, ListActivity::class.java)
+                        val intent = Intent(this, MainScreenActivity::class.java)
                          startActivity(intent)
                         finish() // Tutup MainActivity setelah login berhasil
                     } else {
