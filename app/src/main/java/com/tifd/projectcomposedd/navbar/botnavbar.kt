@@ -7,9 +7,12 @@ import androidx.navigation.compose.composable
 import com.tifd.projectcomposedd.screens.GithubProfileScreen
 import com.tifd.projectcomposedd.screens.ListScreen
 import com.tifd.projectcomposedd.screens.TugasScreen
+import com.tifd.projectcomposedd.datamodel.TugasViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun botnavbar(navController: NavHostController) {
+    val tugasViewModel: TugasViewModel= viewModel()
     NavHost(navController = navController, startDestination = Screen.ListScreen.route) {
         // Route untuk ListScreen
         composable(Screen.ListScreen.route) {
@@ -18,7 +21,10 @@ fun botnavbar(navController: NavHostController) {
 
         // Route untuk TugasScreen
         composable(Screen.TugasScreen.route) {
-            TugasScreen(navController)
+            TugasScreen(
+            navController = navController,
+                tugasViewModel = tugasViewModel
+            )
         }
 
         // Route untuk GithubProfileScreen
