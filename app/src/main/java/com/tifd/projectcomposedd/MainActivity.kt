@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.google.firebase.auth.FirebaseAuth
 import com.tifd.projectcomposedd.ui.theme.ProjectComposeDDTheme
@@ -86,7 +87,7 @@ fun LoginPage(onLoginClicked: (String, String) -> Unit) {
                 text = "Login",
                 style = MaterialTheme.typography.headlineLarge.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF08EE00)
+                    color = Color(0xFF008FEE)
                 ),
                 modifier = Modifier.padding(bottom = 24.dp)
             )
@@ -104,7 +105,8 @@ fun LoginPage(onLoginClicked: (String, String) -> Unit) {
                 onValueChange = { password = it },
                 label = { Text("Password") },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                visualTransformation = PasswordVisualTransformation() // Tambahkan ini
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -123,3 +125,4 @@ fun LoginPage(onLoginClicked: (String, String) -> Unit) {
         }
     }
 }
+

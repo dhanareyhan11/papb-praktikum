@@ -71,9 +71,16 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+
     implementation ("androidx.room:room-runtime:2.5.1")
     implementation ("androidx.room:room-ktx:2.5.1")
     ksp ("androidx.room:room-compiler:2.5.1")
+
+    implementation ("androidx.camera:camera-camera2:1.1.0")
+    implementation ("androidx.camera:camera-lifecycle:1.1.0")
+    implementation ("androidx.camera:camera-view:1.0.0-alpha31")
+    implementation ("androidx.camera:camera-extensions:1.0.0-alpha31")
+
     implementation (platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation ("com.google.firebase:firebase-firestore-ktx")
     implementation ("com.google.firebase:firebase-auth-ktx")

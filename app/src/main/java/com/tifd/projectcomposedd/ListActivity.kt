@@ -165,7 +165,7 @@ fun DataCard(data: DataModel) {
         modifier = Modifier
             .fillMaxWidth()
             .shadow(8.dp, shape = RoundedCornerShape(16.dp)),
-        elevation = CardDefaults.cardElevation(4.dp),
+        elevation = CardDefaults.cardElevation(8.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {

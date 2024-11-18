@@ -1,8 +1,10 @@
 package com.tifd.projectcomposedd.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -22,6 +24,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -43,6 +47,13 @@ fun GithubProfileScreen(
 
     val coroutineScope = rememberCoroutineScope()
 
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background( brush = Brush.verticalGradient(
+                colors = listOf(Color(0xFFE3F2FD), Color(0xFFBBDEFB))))// Warna biru
+            .padding(16.dp)
+    )
     LaunchedEffect(Unit) {
         coroutineScope.launch {
             val response = withContext(Dispatchers.IO) {
